@@ -32,7 +32,7 @@ public class ProgettoSOVarrialeLuca {
          _String = br.readLine();
          _int = Integer.parseInt(_String);
          numRichieste = _int;
-      }catch (IOException e1)
+      }catch (IOException e)
       {
          System.out.println ("errore");
       }

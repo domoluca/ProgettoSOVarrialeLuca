@@ -13,6 +13,7 @@ public class Negozio{
     int richieste;
     int richiestaAttuale;
     int contatore = 0;
+    int chiave = 2;
     boolean permesso = true;
     boolean dormi = true;
     Lock lockHash = null; 
@@ -42,14 +43,17 @@ public class Negozio{
     //this.hash = new Hashtable<Integer, Integer>();
     Stack stack = new Stack();
     Lock lockHash = new ReentrantLock();
-    if (contatore < 3){
+    if (contatore < 2){
         lockHash.lock();
         //hash.put(contatore, pid);
         stack.push(pid);
-        lockHash.unlock();
-        contatore++;
         System.out.println("ho posizionato nella hashtable il regalo "+pid+
                         " contatore = "+(contatore));
+        //System.out.println("ho pushato: "+stack.pop());
+        
+        lockHash.unlock();
+        contatore++;
+        
     }
     else{
         permesso = false;
@@ -62,8 +66,8 @@ public class Negozio{
     //Lock lockHash = new ReentrantLock();
     //permesso = false;
     //dormi = false;
-    int chiave = 2;
-    lockHash.lock();
+    
+    //lockHash.lock();
     while (chiave >= 0){
         //hash.get(chiave);
         //stack.pop();
@@ -80,4 +84,7 @@ public class Negozio{
     this.dormi = true;
     this.permesso = true;
     }
+    
+   
 }
+

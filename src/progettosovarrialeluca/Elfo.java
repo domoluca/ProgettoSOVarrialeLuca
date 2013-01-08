@@ -5,7 +5,7 @@
 package progettosovarrialeluca;
 import java.util.*;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.Logger;import java.util.concurrent.locks.*;
 /**
  *
  * @author Luca
@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class Elfo extends Thread{
     Negozio negozio;
     private String nome;
-    
+    Lock aiuto = new ReentrantLock();
     
     public Elfo(Negozio ne, String nome){
     super(nome);
@@ -34,7 +34,7 @@ public class Elfo extends Thread{
         //negozio.richiestaAttuale++;
         if(possibileguasto > 43){
         negozio.richiestaRegalo();
-        System.out.println("sono l'elfo "+nome+" e servo la richiesta "+pid);
+        System.out.println("sono l'elfo"+nome+" e servo la richiesta "+pid);
         int eseguo = (int) (Math.random() * 101) + 100;  
         try{         
             Thread.sleep(eseguo);
@@ -43,9 +43,10 @@ public class Elfo extends Thread{
             }
         }
         else{
-            System.out.println("c'è stato un guasto con il regalo "+pid);
+            System.out.println("sono l'"+nome+", c'è stato un guasto con il regalo "+pid);
             negozio.richiestaAttuale++;
             negozio.richieste--;
+            //aiuto.lock();
             richiediAiuto(pid);    
         
         }
@@ -60,7 +61,7 @@ public class Elfo extends Thread{
         
         this.negozio.help(pid);
             try {
-                Thread.sleep(550);
+                Thread.sleep(1000000);
             }catch (InterruptedException ex) {
                 Logger.getLogger(Elfo.class.getName()).log(Level.SEVERE, null, ex);
             }
