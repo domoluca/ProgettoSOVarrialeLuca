@@ -41,11 +41,11 @@ public class Negozio{
     this.hash = new Hashtable<Integer, Integer>();
     Lock lockHash = new ReentrantLock();
     if (contatore < 3){
-    lockHash.lock();
-    hash.put(contatore, pid);
-    lockHash.unlock();
-    contatore++;
-    System.out.println("ho posizionato nella hashtable il regalo "+pid+
+        lockHash.lock();
+        hash.put(contatore, pid);
+        lockHash.unlock();
+        contatore++;
+        System.out.println("ho posizionato nella hashtable il regalo "+pid+
                         " contatore = "+(contatore-1));
     }
     else{
@@ -61,15 +61,15 @@ public class Negozio{
     //dormi = false;
     int chiave = 2;
     while (chiave >= 0){
-    this.lockHash.lock();
-    this.hash.get(chiave);
-    int pidAttuale = this.hash.get(chiave);
-    System.out.println("Babbo Natale aggiusta il regalo "+this.hash.get(pidAttuale));
-    this.hash.remove(chiave);
-     try{BabboNatale.sleep(200);
-     }catch(Exception e){
-     System.out.println(e);}
-     chiave--;    
+        this.lockHash.lock();
+        this.hash.get(chiave);
+        int pidAttuale = this.hash.get(chiave);
+        System.out.println("Babbo Natale aggiusta il regalo "+this.hash.get(pidAttuale));
+        this.hash.remove(chiave);
+        try{BabboNatale.sleep(200);
+        }catch(Exception e){
+        System.out.println(e);}
+        chiave--;    
     }
     this.lockHash.unlock();
     this.dormi = true;

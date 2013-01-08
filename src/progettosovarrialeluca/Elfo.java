@@ -61,7 +61,7 @@ public class Elfo extends Thread{
         this.negozio.help(pid);
             try {
                 Thread.sleep(550);
-            } catch (InterruptedException ex) {
+            }catch (InterruptedException ex) {
                 Logger.getLogger(Elfo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

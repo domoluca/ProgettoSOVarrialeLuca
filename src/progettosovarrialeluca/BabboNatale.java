@@ -25,11 +25,9 @@ public class BabboNatale extends Thread{
         System.out.println("sono babbo natale e sto dormendo");
             try {
                 Thread.sleep(1000);
-            } catch (InterruptedException ex) {
+            }catch (InterruptedException ex) {
                 Logger.getLogger(BabboNatale.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
     }
     System.out.println("Babbo natale si è svegliato");
     negozio.risolvi();
