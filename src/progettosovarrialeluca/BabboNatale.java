@@ -30,6 +30,7 @@ public class BabboNatale extends Thread{
             }
     }
     System.out.println("Babbo natale si è svegliato");
+    
     negozio.risolvi();
     
     

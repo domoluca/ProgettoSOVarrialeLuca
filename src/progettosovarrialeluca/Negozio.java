@@ -17,6 +17,7 @@ public class Negozio{
     boolean dormi = true;
     Lock lockHash = null; 
     BabboNatale babboNatale;
+    Stack stack;
     Hashtable<Integer, Integer> hash = null;
     
     public Negozio(int rc){
@@ -38,15 +39,17 @@ public class Negozio{
     
     public void help(int pid){
     
-    this.hash = new Hashtable<Integer, Integer>();
+    //this.hash = new Hashtable<Integer, Integer>();
+    Stack stack = new Stack();
     Lock lockHash = new ReentrantLock();
     if (contatore < 3){
         lockHash.lock();
-        hash.put(contatore, pid);
+        //hash.put(contatore, pid);
+        stack.push(pid);
         lockHash.unlock();
         contatore++;
         System.out.println("ho posizionato nella hashtable il regalo "+pid+
-                        " contatore = "+(contatore-1));
+                        " contatore = "+(contatore));
     }
     else{
         permesso = false;
@@ -60,20 +63,21 @@ public class Negozio{
     //permesso = false;
     //dormi = false;
     int chiave = 2;
+    lockHash.lock();
     while (chiave >= 0){
-        this.lockHash.lock();
-        this.hash.get(chiave);
-        int pidAttuale = this.hash.get(chiave);
-        System.out.println("Babbo Natale aggiusta il regalo "+this.hash.get(pidAttuale));
-        this.hash.remove(chiave);
+        //hash.get(chiave);
+        //stack.pop();
+        //int pidAttuale = stack.pop();
+        System.out.println("Babbo Natale aggiusta il regalo "+stack.pop());
+        //this.hash.remove(chiave);
         try{BabboNatale.sleep(200);
         }catch(Exception e){
         System.out.println(e);}
-        chiave--;    
+        chiave--;   
+        
     }
     this.lockHash.unlock();
     this.dormi = true;
     this.permesso = true;
     }
-    
 }
